@@ -1,0 +1,27 @@
+---
+description: Generate standardized Playwright E2E tests for this boilerplate
+globs:
+  - "tests/**/*.ts"
+alwaysApply: true
+---
+
+# E2E Test Generation
+
+Follow `AI_TEST_RULES.md` before adding or changing tests.
+
+Core rules:
+
+- Import `test` and `expect` from `@Tests/utils/fixtures/playwright-fixtures`.
+- Keep specs under `tests/e2e-specs/{domain}`.
+- Keep Page Objects under `tests/page-objects/{domain}`.
+- Put locators in Page Objects, not in specs.
+- Use `CommonPO` for shared components and behaviour.
+- Use `sub-classes` for modals, tabs and reusable UI fragments.
+- Register every Page Object used by specs in `tests/utils/fixtures/playwright-fixtures.ts`.
+- Use destructured object arguments for every function or method that takes arguments.
+- Prefer `getByTestId`, then `getByRole`, then `getByLabel` or `getByPlaceholder`; do not use CSS selectors.
+- When selecting by visible text or accessible name, add `exact: true` whenever possible.
+- First establish a reliable database or backend API connection so tests can perform CRUD operations for state generation and cleanup.
+- Treat `ApiManager` and example services as illustrative only; adapt API calls per project while preserving the e2e structure.
+- Avoid `waitForTimeout`.
+- Start all code comments with a lowercase letter.
